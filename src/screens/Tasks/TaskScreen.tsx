@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import Header from '../../components/Header/Header'
 import { Text, FlatList } from 'react-native';
+import TaskTile from './TaskTile';
 
 const TaskScreen = () => {
   const [tasks, setTasks] = useState([{title:'hello world', isCompleted:false}]);
   const renderItem = ({item}:any) =>{
-      return <Text>{item.title}</Text>
+      return <TaskTile task={item} />
   }
   return (
     <>
