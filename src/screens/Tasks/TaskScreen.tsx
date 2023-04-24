@@ -12,9 +12,6 @@ interface Task {
 
 const TaskScreen = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const renderItem = ({item}:any) =>{
-      return <TaskTile task={item} />
-  }
   const onAddTask = (title:string) => {
       setTasks([
         ...tasks, {
@@ -25,8 +22,27 @@ const TaskScreen = () => {
       ]);
   }
 
+  const deleteTask = (id:any) =>{
+      let newTasks: Task[] = [];
+      tasks.forEach(t=>{
+        if(t.id!== id){
+          newTasks.push(t);
+          return;
+        }
+      });
+      setTasks(newTasks);    
+  }
+
+  const renderItem = ({item}:any) =>{
+    return <TaskTile 
+              task={item} 
+              onUpdateTask={updateTask} 
+              onDeleteTask={deleteTask}
+            />
+  }
+
   const updateTask = (id:any) => {
-      let newTasks = [];
+      let newTasks: Task[] = [];
       tasks.forEach(t=>{
         if(t.id!== id){
           newTasks.push(t);
@@ -39,6 +55,8 @@ const TaskScreen = () => {
           isCompleted: !t.isCompleted,
         });
       });
+
+      setTasks(newTasks)
   }
 
   return (

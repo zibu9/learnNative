@@ -1,27 +1,34 @@
 import React from 'react'
-import { Alert, Image, Pressable, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 
-type Props = {
+interface Props {
     task: any,
+    onUpdateTask: (id: any) => void;
+    onDeleteTask: (id: any) => void;
 }
 
-const TaskTile = ({task}: Props) => {
+const TaskTile = ({
+    task, 
+    onUpdateTask,
+    onDeleteTask,
+
+}: Props) => {
   const onChangeStatus = () => {
-
+    onUpdateTask(task.id);
   }
-  const onDeleteTask = () => {
-
+  const _onDeleteTask = () => {
+    onDeleteTask(task.id);
   }
   return (
     <View style={styles.container}>
         <Pressable onPress={onChangeStatus} style={styles.subContainer}>
             <Image
                 style={styles.check}
-                source={require('../../../assets/icons/circle2.png')}
+                source={task.isCompleted ? require('../../../assets/icons/check2.png') : require('../../../assets/icons/circle2.png')}
             />
             <Text style={styles.title}>{task.title}</Text>
         </Pressable>
-        <Pressable onPress={onDeleteTask}>
+        <Pressable onPress={_onDeleteTask}>
             <Image
                 style={styles.check}
                 source={require('../../../assets/icons/delete2.png')}
