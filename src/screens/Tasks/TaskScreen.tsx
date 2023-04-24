@@ -9,13 +9,21 @@ const TaskScreen = () => {
   const renderItem = ({item}:any) =>{
       return <TaskTile task={item} />
   }
+  const onAddTask = (title:string) => {
+      setTasks([
+        ...tasks, {
+          title,
+          isCompleted:false
+        }
+      ]);
+  }
   return (
     <>
         <FlatList 
             ListHeaderComponent={
             <>
               <Header />
-              <TaskForm />
+              <TaskForm onAddTask={onAddTask} />
             </>
           }
             contentContainerStyle={{ flexGrow:1}}
