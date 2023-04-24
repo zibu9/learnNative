@@ -1,24 +1,32 @@
 import React from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Alert, Image, Pressable, StyleSheet, Text, View } from 'react-native'
 
 type Props = {
     task: any,
 }
 
 const TaskTile = ({task}: Props) => {
+  const onChangeStatus = () => {
+
+  }
+  const onDeleteTask = () => {
+
+  }
   return (
     <View style={styles.container}>
-        <View style={styles.subContainer}>
+        <Pressable onPress={onChangeStatus} style={styles.subContainer}>
             <Image
                 style={styles.check}
                 source={require('../../../assets/icons/circle2.png')}
             />
             <Text style={styles.title}>{task.title}</Text>
-        </View>
-        <Image
-            style={styles.check}
-            source={require('../../../assets/icons/delete2.png')}
-        />
+        </Pressable>
+        <Pressable onPress={onDeleteTask}>
+            <Image
+                style={styles.check}
+                source={require('../../../assets/icons/delete2.png')}
+            />
+        </Pressable>
     </View>
   )
 }

@@ -11,7 +11,9 @@ const TaskForm = ({onAddTask}: Props) => {
     setTitle(val);
   }
   const onAddNewTask = () => {
+    if (title==="") return
     onAddTask(title);
+    setTitle('');
   }
   return (
     <View style={styles.container}>
