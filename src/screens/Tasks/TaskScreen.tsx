@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import Header from '../../components/Header/Header'
-import { Text, FlatList } from 'react-native';
+import { Text, FlatList, View, StyleSheet, Pressable } from 'react-native';
 import TaskTile from './TaskTile';
 import TaskForm from './TaskForm';
+import FloatingBtn from '../../components/FloatingBtn/FloatingBtn';
+import Counter from '../../components/Counter/Counter';
 
 interface Task {
   id: number;
@@ -12,6 +14,7 @@ interface Task {
 
 const TaskScreen = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [formVisible, setFormVisble] = useState(false);
   const onAddTask = (title:string) => {
       setTasks([
         ...tasks, {
@@ -56,7 +59,11 @@ const TaskScreen = () => {
         });
       });
 
-      setTasks(newTasks)
+      setTasks(newTasks);
+  }
+
+  const _toggleForm = () =>{
+    setFormVisble(!formVisible);
   }
 
   return (
@@ -65,7 +72,11 @@ const TaskScreen = () => {
             ListHeaderComponent={
             <>
               <Header />
-              <TaskForm onAddTask={onAddTask} />
+              {formVisible && <TaskForm onAddTask={onAddTask} />}               
+              <View style={styles.container}>
+                <Counter nb={tasks.length} title='Toutes les taches' />
+                <Counter nb={tasks.filter(t=>t.isCompleted===true).length} title='Terminé' />
+               </View>
             </>
           }
             contentContainerStyle={{ flexGrow:1}}
@@ -73,8 +84,18 @@ const TaskScreen = () => {
             keyExtractor={(item, index)=>index.toString()}
             renderItem={renderItem}
         />
+        <FloatingBtn toggle={_toggleForm} open={formVisible} />
     </>
   )
 }
+
+const styles = StyleSheet.create({
+  container:{
+    flexDirection:"row",
+    justifyContent:"space-between",
+    marginTop:10,
+    paddingHorizontal:20,
+  },
+});
 
 export default TaskScreen
