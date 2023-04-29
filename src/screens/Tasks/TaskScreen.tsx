@@ -15,9 +15,8 @@ interface Task {
 }
 
 const TaskScreen = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
-  const allTasks = useSelector(getTasks);
-  console.log("ALl task", allTasks);
+  const tasks = useSelector(getTasks);
+  console.log("ALl task", tasks);
   const [formVisible, setFormVisble] = useState(false);
 
   const deleteTask = (id:any) =>{
@@ -70,7 +69,7 @@ const TaskScreen = () => {
               {formVisible && <TaskForm />}               
               <View style={styles.container}>
                 <Counter nb={tasks.length} title='Toutes les taches' />
-                <Counter nb={tasks.filter(t=>t.isCompleted===true).length} title='Terminé' />
+                <Counter nb={tasks.filter((t:any)=>t.isCompleted===true).length} title='Terminé' />
                </View>
             </>
           }

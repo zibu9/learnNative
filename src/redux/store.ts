@@ -30,6 +30,13 @@ export function addTask(title:string){
     }
 }
 
+const TOGGLE_TASK = "TOGGLE_TASK";
+
+export const toggleTask = (id:number) =>({
+    type : TOGGLE_TASK,
+    payload : {id}
+}
+);
 const taskList = (state = initialState, action: Action ) =>{
     switch (action.type) {
         case 'ADD_TASK':
