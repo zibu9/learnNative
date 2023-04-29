@@ -16,15 +16,20 @@ interface Action {
 }
 
 const initialState: TaskState = {
-    tasks: [],
+    tasks: [{ id:1, title: "initial task", isCompleted:false}],
 };
 
-const taskList = () =>{
-    
+const taskList = (state = initialState, action: Action ) =>{
+    switch (action.type) {
+        default:
+            return state;
+    }
 }
   
 
 export const store = configureStore({
-    reducer: combineReducers({}),
+    reducer: combineReducers({
+        taskList,
+    }),
     devTools:true,
 });
