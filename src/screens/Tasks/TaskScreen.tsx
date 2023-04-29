@@ -19,15 +19,6 @@ const TaskScreen = () => {
   const allTasks = useSelector(getTasks);
   console.log("ALl task", allTasks);
   const [formVisible, setFormVisble] = useState(false);
-  const onAddTask = (title:string) => {
-      setTasks([
-        ...tasks, {
-          id:Date.now(),
-          title,
-          isCompleted:false
-        }
-      ]);
-  }
 
   const deleteTask = (id:any) =>{
       let newTasks: Task[] = [];
@@ -76,7 +67,7 @@ const TaskScreen = () => {
             ListHeaderComponent={
             <>
               <Header />
-              {formVisible && <TaskForm onAddTask={onAddTask} />}               
+              {formVisible && <TaskForm />}               
               <View style={styles.container}>
                 <Counter nb={tasks.length} title='Toutes les taches' />
                 <Counter nb={tasks.filter(t=>t.isCompleted===true).length} title='Terminé' />
