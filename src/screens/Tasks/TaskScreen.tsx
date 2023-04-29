@@ -40,21 +40,21 @@ const TaskScreen = () => {
   }
 
   const updateTask = (id:any) => {
-      let newTasks: Task[] = [];
-      tasks.forEach(t=>{
-        if(t.id!== id){
-          newTasks.push(t);
-          return;
-        }
+      // let newTasks: Task[] = [];
+      // tasks.forEach(t=>{
+      //   if(t.id!== id){
+      //     newTasks.push(t);
+      //     return;
+      //   }
 
-        newTasks.push({
-          id:t.id,
-          title:t.title,
-          isCompleted: !t.isCompleted,
-        });
-      });
+      //   newTasks.push({
+      //     id:t.id,
+      //     title:t.title,
+      //     isCompleted: !t.isCompleted,
+      //   });
+      // });
 
-      setTasks(newTasks);
+      // setTasks(newTasks);
   }
 
   const _toggleForm = () =>{
