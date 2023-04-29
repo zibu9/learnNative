@@ -21,14 +21,14 @@ const TaskScreen = () => {
   const [formVisible, setFormVisble] = useState(false);
 
   const deleteTask = (id:any) =>{
-      let newTasks: Task[] = [];
-      tasks.forEach(t=>{
-        if(t.id!== id){
-          newTasks.push(t);
-          return;
-        }
-      });
-      setTasks(newTasks);    
+      // let newTasks: Task[] = [];
+      // tasks.forEach(t=>{
+      //   if(t.id!== id){
+      //     newTasks.push(t);
+      //     return;
+      //   }
+      // });
+      // setTasks(newTasks);    
   }
 
   const renderItem = ({item}:any) =>{
