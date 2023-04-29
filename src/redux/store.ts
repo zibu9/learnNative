@@ -7,20 +7,34 @@ interface Task {
     isCompleted: boolean;
 }
 
-interface TaskState {
-    tasks: Task[];
-}
+// interface TaskState {
+//     tasks: Task[];
+// }
 interface Action {
     type: string;
     payload: any;
 }
 
-const initialState: TaskState = {
-    tasks: [{ id:1, title: "initial task", isCompleted:false}],
-};
+const initialState: Task[] = [{ id:1, title: "initial task", isCompleted:false}];
+
+const ADD_TASK = "ADD_TASK";
+function addTask(title:string){
+    return {
+        type : ADD_TASK,
+        payload : {
+            title
+        }
+    }
+}
 
 const taskList = (state = initialState, action: Action ) =>{
     switch (action.type) {
+        case 'ADD_TASK':
+            return [...state, {
+                id: new Date().getTime(),
+                title: action.payload.title,
+                isCompleted: false,
+            }];
         default:
             return state;
     }
