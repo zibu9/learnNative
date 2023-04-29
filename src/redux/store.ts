@@ -45,6 +45,21 @@ const taskList = (state = initialState, action: Action ) =>{
                 title: action.payload.title,
                 isCompleted: false,
             }];
+        case 'TOGGLE_TASK':
+            let newState: Array<Task>  = [];
+            
+            state.forEach(task=>{
+                if(task.id === action.payload.id){
+                    newState.push({
+                        ...task,
+                        isCompleted: !task.isCompleted,
+                    });
+                    return;
+                }
+                newState.push(task);
+            });
+            return newState;
+
         default:
             return state;
     }
