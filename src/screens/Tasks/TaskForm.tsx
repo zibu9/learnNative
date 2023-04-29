@@ -3,11 +3,7 @@ import { Button, StyleSheet, TextInput, View } from 'react-native'
 import { useDispatch, useSelector } from "react-redux";
 import {addTask} from '../../redux/store'
 
-interface Props {
-    onAddTask: (task: string) => void;
-}
-
-const TaskForm = ({onAddTask}: Props) => {
+const TaskForm = () => {
   const [title, setTitle] = useState<string>('');
   const dispatch = useDispatch();
   const onChangeText = (val:any) =>{
@@ -16,7 +12,6 @@ const TaskForm = ({onAddTask}: Props) => {
   const onAddNewTask = () => {
     if (title==="") return
     dispatch(addTask(title));
-    onAddTask(title);
     setTitle('');
   }
   return (
