@@ -5,6 +5,8 @@ import TaskTile from './TaskTile';
 import TaskForm from './TaskForm';
 import FloatingBtn from '../../components/FloatingBtn/FloatingBtn';
 import Counter from '../../components/Counter/Counter';
+import { useDispatch, useSelector } from "react-redux";
+import { getTasks } from '../../redux/store';
 
 interface Task {
   id: number;
@@ -14,6 +16,8 @@ interface Task {
 
 const TaskScreen = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
+  const allTasks = useSelector(getTasks);
+  console.log("ALl task", allTasks);
   const [formVisible, setFormVisble] = useState(false);
   const onAddTask = (title:string) => {
       setTasks([

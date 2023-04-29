@@ -17,6 +17,9 @@ interface Action {
 
 const initialState: Task[] = [{ id:1, title: "initial task", isCompleted:false}];
 
+export const getTasks = (store: any) => store.taskList;
+export const getCompletedTasks = (store: any) => store.taskList.filter((task:any) => task.isCompleted==true);
+
 const ADD_TASK = "ADD_TASK";
 export function addTask(title:string){
     return {
