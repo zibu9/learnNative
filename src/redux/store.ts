@@ -18,7 +18,7 @@ interface Action {
 const initialState: Task[] = [{ id:1, title: "initial task", isCompleted:false}];
 
 const ADD_TASK = "ADD_TASK";
-function addTask(title:string){
+export function addTask(title:string){
     return {
         type : ADD_TASK,
         payload : {
