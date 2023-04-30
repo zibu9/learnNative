@@ -7,9 +7,6 @@ interface Task {
     isCompleted: boolean;
 }
 
-// interface TaskState {
-//     tasks: Task[];
-// }
 interface Action {
     type: string;
     payload: any;
