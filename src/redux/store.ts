@@ -32,8 +32,17 @@ const TOGGLE_TASK = "TOGGLE_TASK";
 export const toggleTask = (id:number) =>({
     type : TOGGLE_TASK,
     payload : {id}
-}
-);
+});
+
+
+const DELETE_TASK = "DELETE_TASK";
+
+export const deleteTask = (id : number) => ({
+    type : DELETE_TASK,
+    payload : {id}
+});
+
+
 const taskList = (state = initialState, action: Action ) =>{
     switch (action.type) {
         case 'ADD_TASK':
@@ -56,13 +65,14 @@ const taskList = (state = initialState, action: Action ) =>{
                 newState.push(task);
             });
             return newState;
+        case 'DELETE_TASK':
+            return state.filter(task => task.id !== action.payload.id);
 
         default:
             return state;
     }
 }
   
-
 export const store = configureStore({
     reducer: combineReducers({
         taskList,
