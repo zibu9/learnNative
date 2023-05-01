@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Header from '../../components/Header/Header'
-import { Text, FlatList, View, StyleSheet, Pressable } from 'react-native';
+import { FlatList, View, StyleSheet } from 'react-native';
 import TaskTile from './TaskTile';
 import TaskForm from './TaskForm';
 import FloatingBtn from '../../components/FloatingBtn/FloatingBtn';
