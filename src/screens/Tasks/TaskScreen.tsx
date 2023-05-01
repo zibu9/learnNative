@@ -6,7 +6,7 @@ import TaskForm from './TaskForm';
 import FloatingBtn from '../../components/FloatingBtn/FloatingBtn';
 import Counter from '../../components/Counter/Counter';
 import { useDispatch, useSelector } from "react-redux";
-import { getTasks, toggleTask } from '../../redux/store';
+import { getTasks, toggleTask, deleteTask } from '../../redux/store';
 
 interface Task {
   id: number;
@@ -19,22 +19,15 @@ const TaskScreen = () => {
   const dispatch = useDispatch();
   const [formVisible, setFormVisble] = useState(false);
 
-  const deleteTask = (id:any) =>{
-      // let newTasks: Task[] = [];
-      // tasks.forEach(t=>{
-      //   if(t.id!== id){
-      //     newTasks.push(t);
-      //     return;
-      //   }
-      // });
-      // setTasks(newTasks);    
+  const onDeleteTask = (id:any) =>{
+    dispatch(deleteTask(id));
   }
 
   const renderItem = ({item}:any) =>{
     return <TaskTile 
               task={item} 
               onUpdateTask={updateTask} 
-              onDeleteTask={deleteTask}
+              onDeleteTask={onDeleteTask}
             />
   }
 
