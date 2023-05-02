@@ -8,12 +8,6 @@ import Counter from '../../components/Counter/Counter';
 import { useDispatch, useSelector } from "react-redux";
 import { getTasks, toggleTask, deleteTask } from '../../redux/store';
 
-interface Task {
-  id: number;
-  title: string;
-  isCompleted: boolean;
-}
-
 const TaskScreen = () => {
   const tasks = useSelector(getTasks);
   const dispatch = useDispatch();
