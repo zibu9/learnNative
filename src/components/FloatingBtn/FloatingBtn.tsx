@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Pressable, StyleSheet, Text } from 'react-native';
 
 interface Props {
@@ -10,7 +10,6 @@ const FloatingBtn = ({
     toggle,
     open,
 }: Props) => {
-  const [formVisible, setFormVisble] = useState(false);
   return (
     <Pressable onPress={toggle} style={styles.btn}>
         <Text style={styles.txt}>{open ? "x" : "+"}</Text>
